@@ -109,36 +109,78 @@
     <h2>
       <a id="designer-templates" class="anchor" aria-hidden="true"><span aria-hidden="true"
           class="octicon octicon-link"></span></a>Principle Component Analysis</h2>
-          <img src="images/pca.png" width="389" height="278">
-    <p>WThrough PCA analysis, we aimed to find out an optimal number of attributes that would yield good results for our later algorithms. Based on the graph, there seems to be a plateau between 6 and 8 that suggests the optimal number of features. It could possibly be explained by the previous insight that some of the features are correlated with one another physically and thus might not be useful to include them.</p>
+    <img src="images/pca.png" width="389" height="278">
+    <p>Through PCA analysis, we aimed to find out an optimal number of attributes that would yield good results for our
+      later algorithms. Based on the graph, there seems to be a plateau between 6 and 8 that suggests the optimal number
+      of features. It could possibly be explained by the previous insight that some of the features are correlated with
+      one another physically and thus might not be useful to include them.</p>
 
     <h2>
       <a id="designer-templates" class="anchor" aria-hidden="true"><span aria-hidden="true"
           class="octicon octicon-link"></span></a>Random Forest</h2>
-    <p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through
-      them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the
-      page generator and switch to another theme. Your Page content will be preserved.</p>
+    <img src="images/dtree1.png" width="355" height="262">
+    <p>To train and test our data, we chose a random 33% split between training and test data. Producing a random forest
+      without any dimension reduction, the accuracy was very high – 94.6%.</p>
 
+    <img src="images/dtree2.png" width="384" height="264">
+    <p>Next, we wanted to see how the prediction accuracy of our Random Forest would be affected by dimension reduction.
+      We this calculated the feature importance of each feature and ranked them. We then fit the model using only the
+      top 5 features. This produced a lower accuracy of 92.5%. Thus, dimensional reduction is not useful in this case.
+    </p>
     <h2>
       <a id="designer-templates" class="anchor" aria-hidden="true"><span aria-hidden="true"
           class="octicon octicon-link"></span></a>Logistic Regression</h2>
-    <p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through
-      them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the
-      page generator and switch to another theme. Your Page content will be preserved.</p>
+    <img src="images/logistics1.png" width="356" height="263">
+    <p>Next, we trained a logistic regression model which gave us an accuracy of 0.894 or 89.4% accuracy.</p>
 
     <h2>
       <a id="designer-templates" class="anchor" aria-hidden="true"><span aria-hidden="true"
           class="octicon octicon-link"></span></a>Naives Bay</h2>
-    <p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through
-      them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the
-      page generator and switch to another theme. Your Page content will be preserved.</p>
+    <img src="images/naivesbay.png" width="356" height="263">
+    <p>Last but not least, we applied Naives Bay algorithm to the dataset and found a low prediction accuracy of 0.665,
+      compared to other models.
+      This low accuracy rate could come from the false assumption in this model that all features are independent from
+      each other in order to interpret each features'
+      conditional probability in contributing to the presence of the cancer. However, we know from earlier analysis that
+      some of the features
+      are not in fact indepdent of one another.
+    </p>
 
     <h2>
       <a id="designer-templates" class="anchor" aria-hidden="true"><span aria-hidden="true"
           class="octicon octicon-link"></span></a>Conclusion</h2>
     <h4>Discussion</h4>
-    <h4>Future Steps</h4>
+    <table style="width:40%">
+      <tr>
+        <th>Model</th>
+        <th>Accuracy</th>
+      </tr>
+      <tr>
+        <td>Random Forest</td>
+        <td>0.94149</td>
 
+      </tr>
+      <tr>
+        <td>Logistics Regression</td>
+        <td>0.89362</td>
+      </tr>
+      <tr>
+        <td>Naives Bayes</td>
+        <td>0.66489</td>
+      </tr>
+    </table>
+    <p>Based on the values we see in the table, the method that yields the best and most accurate predictions was random
+      forest. Similarly, the prediction accuracy of logistic regression comes close. Both results could be due to the
+      inherent linear relationship between some of the physical features. This also explains why Naives Baye did not
+      work well for this dataset since the independence assumption cannot hold in this case.
+    </p>
+    <h4>Future Steps</h4>
+    <p>In the future, we hope to have a larger data set with more training examples to prevent overfitting when training
+      our models. This lack of data could account for the less-than-optimal accuracy even in our best model. </p>
+    <p>The future of breast cancer diagnosis is bright – the accuracy will only improve. Even with few hundred of
+      training examples, our methods show multiple methods to make good diagnosis on patients based on their breast
+      tissue cells. By increasing the accuracy of these machine learning models and fine-tuning certain hyperparameters,
+      we believe the breast cancer can be caught earlier and tackled better worldwide.</p>
     <h2>
       <a id="designer-templates" class="anchor" aria-hidden="true"><span aria-hidden="true"
           class="octicon octicon-link"></span></a>References</h2>
