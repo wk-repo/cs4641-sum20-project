@@ -39,7 +39,9 @@
       model as baseline diagnostic tools for patients. The analysis below outlines each of the methods used, leading up
       to our final recommendations.</p>
     <h4>Dataset</h4>
-    <p>The UCI Breast Cancer Dataset [5] is a public data set that has its features computed from a digitized image of a breast mass. This data set covers the relationship between the malignancy of a cancer cell and its physical properties. The dataset consists of 10 features, 1 binary label, and 569 training examples.</p>
+    <p>The UCI Breast Cancer Dataset [5] is a public data set that has its features computed from a digitized image of a
+      breast mass. This data set covers the relationship between the malignancy of a cancer cell and its physical
+      properties. The dataset consists of 10 features, 1 binary label, and 569 training examples.</p>
     <p>Ten real-valued features are computed for each cell nucleus taken from the breast tissue:</p>
     <ul style="list-style-type:disc;">
       <li>radius (mean of distances from center to points on the perimeter)</li>
@@ -53,29 +55,62 @@
       <li>symmetry</li>
       <li>fractal dimension ("coastline approximation" - 1)</li>
 
-        </ul>
+    </ul>
     <h4>Correlation Matrix</h4>
-    <p>Correlation matrix here here</p>
+    <img src="images/correlation.png" width="600" height="450">
+    <p>In general, we know that a correlation coefficient of more than (absolute value of) 0.7 may suggest
+      multicollinearity between features. After plotting the correlation matrix, we can see that the some of the
+      features are highly correlated. The correlation coefficient is in the value of 0.8 to 1.0. Since some of the
+      features are related with one another physically (e.g. area, radius, and perimeter), it is unsurprising to see
+      such a result of the correlation matrix. </p>
+
     <h2>
       <a id="designer-templates" class="anchor" aria-hidden="true"><span aria-hidden="true"
-          class="octicon octicon-link"></span></a>Features</h2>
-    <p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through
-      them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the
-      page generator and switch to another theme. Your Page content will be preserved.</p>
+          class="octicon octicon-link"></span></a>Feature Distributions</h2>
+    <img src="images/distribution.png" width="500" height="600">
+    <p>Since all ten features are continuous, we plotted their histogram graphs to investigate how these features are
+      distributed. Looking at the distributions of all ten continuous features, we can see that they are mostly normally
+      distributed. Some of the features are skewed to the left, while some are skewed to the right.</p>
+
+    <h2>
+      <a id="designer-templates" class="anchor" aria-hidden="true"><span aria-hidden="true"
+          class="octicon octicon-link"></span></a>Kernel Density Estimation</h2>
+    <img src="images/kde.png" width="350" height="500">
+    <p>We also use Kernel Density Estimation to estimate the pdf of the continuous variables. The result reflects what
+      we had before as they all seem to be normally distributed.</p>
+
 
     <h2>
       <a id="designer-templates" class="anchor" aria-hidden="true"><span aria-hidden="true"
           class="octicon octicon-link"></span></a>K-Means Algorithm</h2>
-    <p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through
-      them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the
-      page generator and switch to another theme. Your Page content will be preserved.</p>
+    <img src="images/kmeans1.png" width="300" height="300">
+    <p>To figure out what subset of the features we should run the K-Means algorithm on, we first plotted the data based
+      by its
+      features. The data is shown with each of the 10 different features against the condition - show as 0 if
+      breast tissue cell is benign and 1 if it is maglinant.
+    </p>
+    <img src="images/kmeans2.png" width="300" height="300">
+    <p>The first method looked rather inconclusive and did not provide valuable insight. Therefore, we explored the
+      second method: plot the data points with each of the features against one another to see which pair gives us
+      interesting plots. Each of these data points are shown as purple if cell is benign or red if cell is malignant.
+      After looking at these graphs, we find that all the attribute pairs are, in fact, worth exploring. We therefore
+      decided to run K-means algorithm on all of them.
+    </p>
+
+    <img src="images/kmeans3.png" width="400" height="800">
+    <p>After running the K-means algorithms on all 45 pairs of attribute relationships, we graphed the number of
+      clusters against the distortion value in an attempt to use the elbow method to see the optimal number of clusters
+      to use for each pair. The motivation here was to understand the spread of the data in the dataset but this
+      experiment did not provide valuable insights. It might be more useful with a larger dataset, where sample sizes
+      are at least more than a few thousands.
+    </p>
+
 
     <h2>
       <a id="designer-templates" class="anchor" aria-hidden="true"><span aria-hidden="true"
           class="octicon octicon-link"></span></a>Principle Component Analysis</h2>
-    <p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through
-      them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the
-      page generator and switch to another theme. Your Page content will be preserved.</p>
+          <img src="images/pca.png" width="389" height="278">
+    <p>WThrough PCA analysis, we aimed to find out an optimal number of attributes that would yield good results for our later algorithms. Based on the graph, there seems to be a plateau between 6 and 8 that suggests the optimal number of features. It could possibly be explained by the previous insight that some of the features are correlated with one another physically and thus might not be useful to include them.</p>
 
     <h2>
       <a id="designer-templates" class="anchor" aria-hidden="true"><span aria-hidden="true"
@@ -107,26 +142,28 @@
     <h2>
       <a id="designer-templates" class="anchor" aria-hidden="true"><span aria-hidden="true"
           class="octicon octicon-link"></span></a>References</h2>
-          <ol>
-            <li>Asri, H., Mousannif, H., Al Moatassime, H. and Noel, T., 2016. Using machine learning algorithms for breast cancer risk prediction and diagnosis. Procedia Computer Science, 83, pp.1064-1069.</li>
-            <li>Key, T., Verkasalo, P. and Banks, E., 2001. Epidemiology of breast cancer. The Lancet Oncology, 2(3), pp.133-140.</li>
-            <li>Liu, H., Zhang, R., Luan, F., Yao, X., Liu, M., Hu, Z. and Fan, B., 2003. Diagnosing Breast Cancer Based on Support Vector Machines. ChemInform, 34(34).</li>
-            <li>Jerez, J., Molina, I., García-Laencina, P., Alba, E., Ribelles, N., Martín, M. and Franco, L., 2010. Missing data imputation using statistical and machine learning methods in a real breast cancer problem. Artificial Intelligence in Medicine, 50(2), pp.105-115.</li>
-            <li>Kaggle.com. 2020. Breast Cancer Wisconsin (Diagnostic) Data Set. [online] Available at: <https://www.kaggle.com/uciml/breast-cancer-wisconsin-data> [Accessed 12 June 2020].</li>
-          </ol>
+    <ol>
+      <li>Asri, H., Mousannif, H., Al Moatassime, H. and Noel, T., 2016. Using machine learning algorithms for breast
+        cancer risk prediction and diagnosis. Procedia Computer Science, 83, pp.1064-1069.</li>
+      <li>Key, T., Verkasalo, P. and Banks, E., 2001. Epidemiology of breast cancer. The Lancet Oncology, 2(3),
+        pp.133-140.</li>
+      <li>Liu, H., Zhang, R., Luan, F., Yao, X., Liu, M., Hu, Z. and Fan, B., 2003. Diagnosing Breast Cancer Based on
+        Support Vector Machines. ChemInform, 34(34).</li>
+      <li>Jerez, J., Molina, I., García-Laencina, P., Alba, E., Ribelles, N., Martín, M. and Franco, L., 2010. Missing
+        data imputation using statistical and machine learning methods in a real breast cancer problem. Artificial
+        Intelligence in Medicine, 50(2), pp.105-115.</li>
+      <li>Kaggle.com. 2020. Breast Cancer Wisconsin (Diagnostic) Data Set. [online] Available at:
+        <https://www.kaggle.com/uciml/breast-cancer-wisconsin-data> [Accessed 12 June 2020].</li> </ol> <footer
+          class="site-footer">
+          <span class="site-footer-owner"><a
+              href="https://github.gatech.edu/wli455/cs4641-final-project">Cs4641-final-project</a> is maintained by <a
+              href="https://github.gatech.edu/wli455">wli455</a>.</span>
 
-
-
-
-    <footer class="site-footer">
-      <span class="site-footer-owner"><a
-          href="https://github.gatech.edu/wli455/cs4641-final-project">Cs4641-final-project</a> is maintained by <a
-          href="https://github.gatech.edu/wli455">wli455</a>.</span>
-
-      <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a>
-        using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a
-          href="https://twitter.com/jasonlong">Jason Long</a>.</span>
-    </footer>
+          <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub
+              Pages</a>
+            using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a
+              href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+          </footer>
 
   </section>
 
