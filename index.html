@@ -59,9 +59,9 @@
     <h4>Correlation Matrix</h4>
     <img src="images/correlation.png" width="600" height="450">
     <p>In general, we know that a correlation coefficient of more than (absolute value of) 0.7 may suggest
-      multicollinearity between features. After plotting the correlation matrix, we can see that the some of the
+      multicollinearity between features. After plotting the correlation matrix, we can see that some of the
       features are highly correlated. The correlation coefficient is in the value of 0.8 to 1.0. Since some of the
-      features are related with one another physically (e.g. area, radius, and perimeter), it is unsurprising to see
+      features are related to one another physically (e.g. area, radius, and perimeter), it is unsurprising to see
       such a result of the correlation matrix. </p>
 
     <h2>
@@ -85,16 +85,15 @@
           class="octicon octicon-link"></span></a>K-Means Algorithm</h2>
     <img src="images/kmeans1.png" width="300" height="300">
     <p>To figure out what subset of the features we should run the K-Means algorithm on, we first plotted the data based
-      by its
-      features. The data is shown with each of the 10 different features against the condition - show as 0 if
-      breast tissue cell is benign and 1 if it is maglinant.
+      by its features. The data is shown with each of the 10 different features against the condition - show as 0 if
+      breast tissue cell is benign and 1 if it is malignant.
     </p>
     <img src="images/kmeans2.png" width="300" height="300">
     <p>The first method looked rather inconclusive and did not provide valuable insight. Therefore, we explored the
       second method: plot the data points with each of the features against one another to see which pair gives us
-      interesting plots. Each of these data points are shown as purple if cell is benign or red if cell is malignant.
+      interesting plots. Each of these data points is shown as purple if the cell is benign or red if the cell is malignant.
       After looking at these graphs, we find that all the attribute pairs are, in fact, worth exploring. We therefore
-      decided to run K-means algorithm on all of them.
+      decided to run the K-means algorithm on all of them.
     </p>
 
     <img src="images/kmeans3.png" width="400" height="800">
@@ -102,7 +101,7 @@
       clusters against the distortion value in an attempt to use the elbow method to see the optimal number of clusters
       to use for each pair. The motivation here was to understand the spread of the data in the dataset but this
       experiment did not provide valuable insights. It might be more useful with a larger dataset, where sample sizes
-      are at least more than a few thousands.
+      are at least more than a few thousand.
     </p>
 
 
@@ -123,9 +122,9 @@
       without any dimension reduction, the accuracy was very high – 94.6%.</p>
 
     <img src="images/dtree2.png" width="384" height="264">
-    <p>Next, we wanted to see how the prediction accuracy of our Random Forest would be affected by dimension reduction.
+    <p>Next, we wanted to see how the prediction accuracy of our Random Forest would be affected by dimensional reduction.
       We calculated the feature importance of each feature and ranked them. We then fit the model using only the
-      top 5 features. This produced a lower accuracy of 92.5%. Thus, dimensional reduction is not useful in this case.
+      top 5 features. This produced a lower accuracy of 92.5%. Thus, the dimensional reduction is not useful in this case.
     </p>
     <h2>
       <a id="designer-templates" class="anchor" aria-hidden="true"><span aria-hidden="true"
@@ -139,11 +138,11 @@
     <img src="images/naivesbay.png" width="356" height="263">
     <p>Last but not least, we applied Naives Bay algorithm to the dataset and found a low prediction accuracy of 0.665,
       compared to other models.
-      This low accuracy rate could come from the false assumption in this model that all features are independent from
+      This low accuracy rate could come from the false assumption in this model that all the features are independent of
       each other in order to interpret each features'
-      conditional probability in contributing to the presence of the cancer. However, we know from earlier analysis that
+      conditional probability in contributing to the presence of cancer. However, we know from earlier analysis that
       some of the features
-      are not in fact indepdent of one another.
+      are not in fact independent of one another.
     </p>
 
     <h2>
@@ -178,7 +177,7 @@
     <p>In the future, we hope to have a larger data set with more training examples to prevent overfitting when training
       our models. This lack of data could account for the less-than-optimal accuracy even in our best model. </p>
     <p>The future of breast cancer diagnosis is bright – the accuracy will only improve. Even with few hundred of
-      training examples, our methods show multiple methods to make good diagnosis on patients based on their breast
+      training examples, our methods show multiple methods to make a good diagnosis of patients based on their breast
       tissue cells. By increasing the accuracy of these machine learning models and fine-tuning certain hyperparameters,
       we believe the breast cancer can be caught earlier and tackled better worldwide.</p>
     <h2>
